@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import fit.imc.models.jpa.Person;
 import fit.imc.services.abstracts.ImcCalculatorServiceTemplate;
 import fit.imc.view.PersonViewModel;
 
@@ -19,7 +20,7 @@ import fit.imc.view.PersonViewModel;
 @RequestMapping("/imc-header")
 public class ImcWithHeadersController {
     @Autowired
-    ImcCalculatorServiceTemplate service;
+    ImcCalculatorServiceTemplate<Person> service;
 
     @GetMapping(value="/table", headers="Accept-version=v1")
     public Map<String, String> getTable() {

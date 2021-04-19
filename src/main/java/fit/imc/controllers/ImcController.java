@@ -24,7 +24,7 @@ import fit.imc.models.mongo.Person;
 public class ImcController {
 
     @Autowired
-    ImcCalculatorServiceTemplate service;
+    ImcCalculatorServiceTemplate<Person> service;
 
     @GetMapping("/table")
     public Map<String, String> getTable() {
