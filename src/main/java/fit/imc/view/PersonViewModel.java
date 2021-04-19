@@ -1,6 +1,6 @@
 package fit.imc.view;
 
-public class Person {
+public class PersonViewModel {
     public double height;
     public double weight;
     public double imc;
