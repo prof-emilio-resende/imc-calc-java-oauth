@@ -3,6 +3,7 @@ package fit.imc.controllers;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.data.rest.webmvc.BasePathAwareController;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import fit.imc.view.Person;
 
+@BasePathAwareController
 @RestController
 @CrossOrigin(origins = "http://127.0.0.1:8000")
 @RequestMapping("/imc")
