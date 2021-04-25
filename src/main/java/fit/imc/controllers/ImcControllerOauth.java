@@ -20,16 +20,11 @@ import fit.imc.models.mongo.Person;
 @BasePathAwareController
 @RestController
 @CrossOrigin(origins = "http://127.0.0.1:8000")
-@RequestMapping("/imc/jwt")
-public class ImcController {
+@RequestMapping("/imc")
+public class ImcControllerOauth {
 
     @Autowired
     ImcCalculatorServiceTemplate<Person> service;
-
-    @PostMapping("/calculate")
-    public PersonViewModel calculateImc(@RequestBody PersonViewModel personInput) {
-        return service.calculate(personInput);
-    }
 
     @GetMapping("/table")
     public Map<String, String> getTable() {
@@ -41,5 +36,10 @@ public class ImcController {
         map.put("99", "Obesidade");
 
         return map;
+    }
+
+    @PostMapping("/calculate")
+    public PersonViewModel calculateImc(@RequestBody PersonViewModel personInput) {
+        return service.calculate(personInput);
     }
 }

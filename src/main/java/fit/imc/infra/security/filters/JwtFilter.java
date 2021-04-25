@@ -30,8 +30,8 @@ public class JwtFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
         var authHeader = request.getHeader("Authorization");
-        if (authHeader != null && authHeader.startsWith("Bearer")) {
-            var token = authHeader.replaceFirst("Bearer", "");
+        if (authHeader != null && authHeader.startsWith("JWT")) {
+            var token = authHeader.replaceFirst("JWT", "");
             var username = jwtUtils.extractUsername(token);
 
             if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
