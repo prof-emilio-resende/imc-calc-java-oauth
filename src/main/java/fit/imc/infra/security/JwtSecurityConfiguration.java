@@ -37,9 +37,23 @@ public class JwtSecurityConfiguration extends WebSecurityConfigurerAdapter {
     
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable().authorizeRequests()
+        http.csrf().disable()
+            .authorizeRequests()
             .antMatchers("/auth/login")
-            .permitAll()
+            .permitAll();
+
+        http.authorizeRequests()
+            .antMatchers("/imc-header")
+            .authenticated()
+            .and()
+            .httpBasic()
+            .and()
+            .logout()
+            .logoutUrl("auth/logout")
+            .invalidateHttpSession(true)
+            .deleteCookies();
+
+        http.authorizeRequests()
             .anyRequest()
             .authenticated()
             .and()

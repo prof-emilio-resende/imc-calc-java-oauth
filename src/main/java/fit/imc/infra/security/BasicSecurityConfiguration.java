@@ -39,6 +39,9 @@
 //             .anyRequest()
 //             .authenticated()
 //             .and()
-//             .logout();
+//             .logout()
+            // .logoutUrl("auth/logout")
+            // .invalidateHttpSession(true)
+            // .deleteCookies();
 //     }
 // }
