@@ -14,7 +14,7 @@ public class OauthSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-            .antMatcher("/v2/imc/**")
+            .antMatcher("/v2/imc/oauth/**")
             .csrf().disable()
                 .authorizeRequests()
                 .anyRequest()
@@ -24,6 +24,7 @@ public class OauthSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .disable()
                 .oauth2ResourceServer()
                 .jwt();
+        http.cors();
     }
 
 }

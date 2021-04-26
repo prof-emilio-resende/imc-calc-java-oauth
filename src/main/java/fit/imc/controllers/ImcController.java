@@ -19,7 +19,7 @@ import fit.imc.models.mongo.Person;
 
 @BasePathAwareController
 @RestController
-@CrossOrigin(origins = "http://127.0.0.1:8000")
+@CrossOrigin
 @RequestMapping("/imc/jwt")
 public class ImcController {
 

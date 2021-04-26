@@ -19,8 +19,8 @@ import fit.imc.models.mongo.Person;
 
 @BasePathAwareController
 @RestController
-@CrossOrigin(origins = "http://127.0.0.1:8000")
-@RequestMapping("/imc")
+@CrossOrigin
+@RequestMapping("/imc/oauth")
 public class ImcControllerOauth {
 
     @Autowired
