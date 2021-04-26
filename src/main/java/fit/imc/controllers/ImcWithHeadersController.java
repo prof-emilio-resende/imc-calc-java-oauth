@@ -16,7 +16,7 @@ import fit.imc.services.abstracts.ImcCalculatorServiceTemplate;
 import fit.imc.view.PersonViewModel;
 
 @RestController
-@CrossOrigin(origins = "http://127.0.0.1:8000")
+@CrossOrigin
 @RequestMapping("/imc-header")
 public class ImcWithHeadersController {
     @Autowired

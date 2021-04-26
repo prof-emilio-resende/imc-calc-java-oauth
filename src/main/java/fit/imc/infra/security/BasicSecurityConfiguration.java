@@ -26,6 +26,7 @@ public class BasicSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+            .cors().and()
             .antMatcher("/imc-header/**")
             .csrf().disable()
             .authorizeRequests()
