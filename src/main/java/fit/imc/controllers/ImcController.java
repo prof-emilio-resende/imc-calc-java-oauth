@@ -1,8 +1,11 @@
 package fit.imc.controllers;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import fit.imc.models.jpa.Person;
+import fit.imc.repositories.impl.ImcPersonJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.BasePathAwareController;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -15,8 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 import fit.imc.services.abstracts.ImcCalculatorServiceTemplate;
 import fit.imc.view.PersonViewModel;
 
-import fit.imc.models.mongo.Person;
-
 @BasePathAwareController
 @RestController
 @CrossOrigin
@@ -25,10 +26,18 @@ public class ImcController {
 
     @Autowired
     ImcCalculatorServiceTemplate<Person> service;
+    
+    @Autowired
+    ImcPersonJpaRepository imcPersonJpaRepository;
 
     @PostMapping("/calculate")
     public PersonViewModel calculateImc(@RequestBody PersonViewModel personInput) {
         return service.calculate(personInput);
+    }
+
+    @GetMapping("/list")
+    public List<Person> list() {
+        return imcPersonJpaRepository.findAllByImcNotNull();
     }
 
     @GetMapping("/table")
