@@ -12,3 +12,5 @@ Joao Paulo
 Leonardo Ribeiro
 
 Rodrigo Laugeni
+
+Victor Augusto de Souza
