@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,6 +23,18 @@ import fit.imc.view.PersonViewModel;
 public class ImcWithHeadersController {
     @Autowired
     ImcCalculatorServiceTemplate<Person> service;
+
+    @GetMapping(value="/table")
+    public ResponseEntity<Map<String, String>> getTableAgnostic() {
+        var map = new HashMap<String, String>();
+    
+        map.put("0", "Magreza");
+        map.put("18.5", "Normal");
+        map.put("24.9", "Sobrepeso");
+        map.put("99", "Obesidade");
+
+       return new ResponseEntity<Map<String, String>>(map, HttpStatus.ACCEPTED);
+    }
 
     @GetMapping(value="/table", headers="Accept-version=v1")
     public Map<String, String> getTable() {
